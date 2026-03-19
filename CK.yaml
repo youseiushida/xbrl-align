@@ -1,0 +1,585 @@
+# EDINET XBRL 財務諸表 科目マッピング定義
+# namespace: jppfs_cor (日本基準 財務諸表本表タクソノミ)
+# taxonomy_version: 2025-11-01
+#
+# qname: jppfs_cor タクソノミ上の要素名（prefix省略）
+# 合計行: true の科目は集計行（計算リンクベースで子科目を合算する）
+# period: instant=時点値 / duration=期間値（省略時はBS=instant, PL/CF=duration）
+# NOTE: 連結/個別でラベルが異なる科目あり（例: IncomeBeforeIncomeTaxes → 個別:税引前当期純利益 / 連結:税金等調整前当期純利益）
+
+財務諸表:
+
+  # ============================================================
+  # 損益計算書
+  # ============================================================
+  PL:
+    名称: 損益計算書
+    科目:
+      売上高:
+        qname: NetSales
+      売上原価:
+        qname: CostOfSales
+      売上総利益:
+        qname: GrossProfit
+        合計行: true
+      販売費及び一般管理費:
+        qname: SellingGeneralAndAdministrativeExpenses
+        子科目:
+          研究開発費:
+            qname: ResearchAndDevelopmentExpensesSGA
+      営業利益:
+        qname: OperatingIncome
+        合計行: true
+      営業外収益:
+        qname: NonOperatingIncome
+        子科目:
+          受取利息及び配当金:
+            qname: InterestAndDividendsIncomeNOI
+          持分法による投資利益:
+            qname: EquityInEarningsOfAffiliatesNOI
+      営業外費用:
+        qname: NonOperatingExpenses
+        子科目:
+          支払利息:
+            qname: InterestExpensesNOE
+      # 金融収益/金融費用: IFRS PLの主要科目だがjppfsに合算概念なし。
+      # IFRSの FinanceIncomeIFRS / FinanceCostsIFRS は営業外収益/費用のrepresentativeに
+      # LLMが紐づけているため、別キーとしては設けない。
+      経常利益:
+        qname: OrdinaryIncome
+        合計行: true
+      特別利益:
+        qname: ExtraordinaryIncome
+      特別損失:
+        qname: ExtraordinaryLoss
+        子科目:
+          減損損失:
+            qname: ImpairmentLossEL
+      税引前当期純利益:
+        qname: IncomeBeforeIncomeTaxes
+        合計行: true
+        備考: 連結ラベルは「税金等調整前当期純利益」
+      法人税等:
+        qname: IncomeTaxes
+      当期純利益:
+        qname: ProfitLoss
+        合計行: true
+      非支配株主に帰属する当期純利益:
+        qname: ProfitLossAttributableToNonControllingInterests
+        備考: 連結のみ
+      親会社株主に帰属する当期純利益:
+        qname: ProfitLossAttributableToOwnersOfParent
+        合計行: true
+        備考: 連結のみ
+
+  # ============================================================
+  # 包括利益計算書
+  # ============================================================
+  CI:
+    名称: 包括利益計算書
+    科目:
+      その他の包括利益:
+        qname: OtherComprehensiveIncome
+      包括利益:
+        qname: ComprehensiveIncome
+        合計行: true
+      親会社株主に係る包括利益:
+        qname: ComprehensiveIncomeAttributableToOwnersOfTheParent
+        備考: 連結のみ
+      非支配株主に係る包括利益:
+        qname: ComprehensiveIncomeAttributableToNonControllingInterests
+        備考: 連結のみ
+
+  # ============================================================
+  # 貸借対照表
+  # ============================================================
+  BS:
+    名称: 貸借対照表
+    科目:
+      # --- 資産の部 ---
+      流動資産:
+        qname: CurrentAssets
+        合計行: true
+        子科目:
+          現金及び預金:
+            qname: CashAndDeposits
+          有価証券:
+            qname: ShortTermInvestmentSecurities
+            備考: 流動資産の有価証券（売買目的等の短期保有）
+          売上債権:
+            qname: NotesAndAccountsReceivableTrade
+            備考: 受取手形及び売掛金。企業により「受取手形、売掛金及び契約資産」等の表示もある
+            子科目:
+              受取手形:
+                qname: NotesReceivableTrade
+                備考: IFRSには単体の対応概念なし
+              売掛金:
+                qname: AccountsReceivableTrade
+              契約資産:
+                qname: ContractAssets
+                備考: 収益認識基準により計上される契約資産
+          貸倒引当金:
+            qname: AllowanceForDoubtfulAccountsCA
+            備考: 流動資産の貸倒引当金（控除項目）。IFRSではECLモデルで別扱い
+          棚卸資産:
+            qname: Inventories
+            子科目:
+              商品:
+                qname: Merchandise
+              製品:
+                qname: FinishedGoods
+              商品及び製品:
+                qname: MerchandiseAndFinishedGoods
+              原材料:
+                qname: RawMaterials
+              貯蔵品:
+                qname: Supplies
+              原材料及び貯蔵品:
+                qname: RawMaterialsAndSupplies
+              半製品:
+                qname: SemiFinishedGoods
+              仕掛品:
+                qname: WorkInProcess
+          短期貸付金:
+            qname: ShortTermLoansReceivable
+            備考: IFRSには直接の対応概念なし
+          前渡金:
+            qname: AdvancePaymentsTrade
+          前払費用:
+            qname: PrepaidExpenses
+            備考: IFRSには直接の対応概念なし
+          未収入金:
+            qname: AccountsReceivableOther
+            備考: IFRSではTradeAndOtherReceivablesの「Other」部分に含有
+          未収収益:
+            qname: AccruedIncome
+            備考: IFRSには直接の対応概念なし
+          その他流動資産:
+            qname: OtherCA
+      固定資産:
+        qname: NoncurrentAssets
+        合計行: true
+        子科目:
+          有形固定資産:
+            qname: PropertyPlantAndEquipment
+            子科目:
+              建物及び構築物:
+                qname: BuildingsAndStructures
+                備考: jppfs/IFRSとも建物と構築物を合算表示するケースが多い
+              機械装置及び運搬具:
+                qname: MachineryEquipmentAndVehicles
+              工具器具備品:
+                qname: ToolsFurnitureAndFixtures
+              土地:
+                qname: Land
+              建設仮勘定:
+                qname: ConstructionInProgress
+          無形固定資産:
+            qname: IntangibleAssets
+            子科目:
+              のれん:
+                qname: Goodwill
+              ソフトウェア:
+                qname: Software
+          投資その他の資産:
+            qname: InvestmentsAndOtherAssets
+            子科目:
+              投資有価証券:
+                qname: InvestmentSecurities
+              長期貸付金:
+                qname: LongTermLoansReceivable
+                備考: IFRSには直接の対応概念なし
+              退職給付に係る資産:
+                qname: NetDefinedBenefitAsset
+              繰延税金資産:
+                qname: DeferredTaxAssets
+      繰延資産:
+        qname: DeferredAssets
+        備考: IFRSには繰延資産の概念なし
+        子科目:
+          株式交付費:
+            qname: StockIssuanceCostDA
+          社債発行費:
+            qname: BondIssuanceCostDA
+          開発費:
+            qname: DevelopmentExpensesDA
+      資産合計:
+        qname: Assets
+        合計行: true
+
+      # --- 負債の部 ---
+      流動負債:
+        qname: CurrentLiabilities
+        合計行: true
+        子科目:
+          支払手形及び買掛金:
+            qname: NotesAndAccountsPayableTrade
+          買掛金:
+            qname: AccountsPayableTrade
+          短期借入金:
+            qname: ShortTermLoansPayable
+          コマーシャル・ペーパー:
+            qname: CommercialPapersLiabilities
+            備考: IFRSには直接の対応概念なし
+          一年内返済予定の長期借入金:
+            qname: CurrentPortionOfLongTermLoansPayable
+          リース債務_流動:
+            qname: LeaseObligationsCL
+          未払金:
+            qname: AccountsPayableOther
+            備考: 営業活動以外の取引から生じた未払額。IFRSには直接の対応概念なし
+          未払法人税等:
+            qname: IncomeTaxesPayable
+          未払費用:
+            qname: AccruedExpenses
+          前受金:
+            qname: AdvancesReceived
+          前受収益:
+            qname: UnearnedRevenue
+          預り金:
+            qname: DepositsReceived
+            備考: IFRSには直接の対応概念なし
+          賞与引当金:
+            qname: ProvisionForBonuses
+            備考: IFRSには直接の対応概念なし。Provisionsに包含される
+          引当金_流動:
+            qname: ProvisionCL
+          資産除去債務_流動:
+            qname: AssetRetirementObligationsCL
+            備考: IFRSには直接の対応概念なし
+          その他流動負債:
+            qname: OtherCL
+      固定負債:
+        qname: NoncurrentLiabilities
+        合計行: true
+        子科目:
+          長期借入金:
+            qname: LongTermLoansPayable
+          社債:
+            qname: BondsPayable
+          リース債務_固定:
+            qname: LeaseObligationsNCL
+          繰延税金負債:
+            qname: DeferredTaxLiabilities
+          退職給付に係る負債:
+            qname: NetDefinedBenefitLiability
+          引当金_固定:
+            qname: ProvisionNCL
+          資産除去債務_固定:
+            qname: AssetRetirementObligationsNCL
+            備考: IFRSには直接の対応概念なし
+          その他固定負債:
+            qname: OtherNCL
+      負債合計:
+        qname: Liabilities
+        合計行: true
+
+      # --- 純資産の部 ---
+      株主資本:
+        qname: ShareholdersEquity
+        子科目:
+          資本金:
+            qname: CapitalStock
+          資本剰余金:
+            qname: CapitalSurplus
+            子科目:
+              資本準備金:
+                qname: LegalCapitalSurplus
+              その他資本剰余金:
+                qname: OtherCapitalSurplus
+          利益剰余金:
+            qname: RetainedEarnings
+            子科目:
+              利益準備金:
+                qname: LegalRetainedEarnings
+              その他利益剰余金:
+                qname: OtherRetainedEarnings
+                子科目:
+                  任意積立金:
+                    qname: VoluntaryRetainedEarnings
+                    備考: 別途積立金(GeneralReserve)を含むGS親概念
+                  繰越利益剰余金:
+                    qname: RetainedEarningsBroughtForward
+          自己株式:
+            qname: TreasuryStock
+        株主資本合計:
+          qname: ShareholdersEquity
+          合計行: true
+      その他の包括利益累計額:
+        qname: ValuationAndTranslationAdjustments
+        備考: 個別ラベルは「評価・換算差額等」、連結ラベルは「その他の包括利益累計額」
+        子科目:
+          その他有価証券評価差額金:
+            qname: ValuationDifferenceOnAvailableForSaleSecurities
+          繰延ヘッジ損益:
+            qname: DeferredGainsOrLossesOnHedges
+          土地再評価差額金:
+            qname: RevaluationReserveForLand
+          為替換算調整勘定:
+            qname: ForeignCurrencyTranslationAdjustment
+          退職給付に係る調整累計額:
+            qname: RemeasurementsOfDefinedBenefitPlans
+      新株予約権:
+        qname: SubscriptionRightsToShares
+      非支配株主持分:
+        qname: NonControllingInterests
+      純資産合計:
+        qname: NetAssets
+        合計行: true
+      負債純資産合計:
+        qname: LiabilitiesAndNetAssets
+        合計行: true
+
+  # ============================================================
+  # キャッシュフロー計算書
+  # ============================================================
+  CF:
+    名称: キャッシュフロー計算書
+    科目:
+      営業CF:
+        qname: NetCashProvidedByUsedInOperatingActivities
+        合計行: true
+        子科目:
+          税引前当期純利益:
+            qname: IncomeBeforeIncomeTaxes
+            備考: PL科目と同一要素。連結では「税金等調整前当期純利益」
+          減価償却費:
+            qname: DepreciationAndAmortizationOpeCF
+          のれん償却額:
+            qname: AmortizationOfGoodwillOpeCF
+          減損損失:
+            qname: ImpairmentLossOpeCF
+          受取利息及び配当金:
+            qname: InterestAndDividendsIncomeOpeCF
+          支払利息:
+            qname: InterestExpensesOpeCF
+          売上債権の増減額:
+            qname: DecreaseIncreaseInNotesAndAccountsReceivableTradeOpeCF
+          棚卸資産の増減額:
+            qname: DecreaseIncreaseInInventoriesOpeCF
+          仕入債務の増減額:
+            qname: IncreaseDecreaseInNotesAndAccountsPayableTradeOpeCF
+          営業CF小計:
+            qname: SubtotalOpeCF
+            備考: 営業CFのうち利息・配当・税金の受払前の小計
+          利息及び配当金の受取額:
+            qname: InterestAndDividendsIncomeReceivedOpeCFInvCF
+            備考: キャッシュベースの利息・配当金受取額
+          利息の支払額:
+            qname: InterestExpensesPaidOpeCFFinCF
+            備考: キャッシュベースの利息支払額
+          法人税等の支払額:
+            qname: IncomeTaxesPaidOpeCF
+      投資CF:
+        qname: NetCashProvidedByUsedInInvestmentActivities
+        合計行: true
+        子科目:
+          有形固定資産の取得:
+            qname: PurchaseOfPropertyPlantAndEquipmentInvCF
+          有形固定資産の売却:
+            qname: ProceedsFromSalesOfPropertyPlantAndEquipmentInvCF
+          無形固定資産の取得:
+            qname: PurchaseOfIntangibleAssetsInvCF
+          投資有価証券の取得:
+            qname: PurchaseOfInvestmentSecuritiesInvCF
+          投資有価証券の売却:
+            qname: ProceedsFromSalesOfInvestmentSecuritiesInvCF
+          子会社株式の取得:
+            qname: PurchaseOfInvestmentsInSubsidiariesInvCF
+      財務CF:
+        qname: NetCashProvidedByUsedInFinancingActivities
+        合計行: true
+        子科目:
+          短期借入金の純増減額:
+            qname: NetIncreaseDecreaseInShortTermLoansPayableFinCF
+          長期借入れによる収入:
+            qname: ProceedsFromLongTermLoansPayableFinCF
+          長期借入金の返済:
+            qname: RepaymentOfLongTermLoansPayableFinCF
+          社債の発行:
+            qname: ProceedsFromIssuanceOfBondsFinCF
+          社債の償還:
+            qname: RedemptionOfBondsFinCF
+          配当金の支払額:
+            qname: CashDividendsPaidFinCF
+          自己株式の取得:
+            qname: PurchaseOfTreasuryStockFinCF
+          自己株式の処分:
+            qname: ProceedsFromSalesOfTreasuryStockFinCF
+          非支配株主への配当金の支払額:
+            qname: DividendsPaidToNonControllingInterestsFinCF
+            備考: 連結のみ
+          リース債務の返済による支出:
+            qname: RepaymentsOfLeaseObligationsFinCF
+      現金及び現金同等物に係る換算差額:
+        qname: EffectOfExchangeRateChangeOnCashAndCashEquivalents
+        備考: 為替レート変動によるキャッシュ残高への影響。IFRSには直接の対応概念なし
+      現金及び現金同等物の増減額:
+        qname: NetIncreaseDecreaseInCashAndCashEquivalents
+        合計行: true
+      現金及び現金同等物の期首残高:
+        qname: CashAndCashEquivalents
+        period: instant
+        label_role: periodStartLabel
+      現金及び現金同等物の期末残高:
+        qname: CashAndCashEquivalents
+        period: instant
+        label_role: periodEndLabel
+        合計行: true
+
+  # ============================================================
+  # 株主資本等変動計算書
+  # ============================================================
+  SS:
+    名称: 株主資本等変動計算書
+    備考: >
+      2次元テーブル構造。列=ComponentsOfEquityAxis のメンバー（科目）、
+      行=変動事由（line items）。残高はNetAssets要素のperiod(instant)で
+      期首/期末を区別する。
+
+    dimension:
+      axis: ComponentsOfEquityAxis
+
+    # --- 列: 純資産の構成要素（Axisのメンバー） ---
+    科目:
+      株主資本:
+        member: ShareholdersEquityMember
+        子科目:
+          資本金:
+            member: CapitalStockMember
+          資本剰余金:
+            member: CapitalSurplusMember
+            子科目:
+              資本準備金:
+                member: LegalCapitalSurplusMember
+              その他資本剰余金:
+                member: OtherCapitalSurplusMember
+          利益剰余金:
+            member: RetainedEarningsMember
+            子科目:
+              利益準備金:
+                member: LegalRetainedEarningsMember
+              その他利益剰余金:
+                member: OtherRetainedEarningsMember
+                子科目:
+                  別途積立金:
+                    member: GeneralReserveMember
+                  繰越利益剰余金:
+                    member: RetainedEarningsBroughtForwardMember
+          自己株式:
+            member: TreasuryStockMember
+        株主資本合計:
+          member: ShareholdersEquityMember
+          合計行: true
+      その他の包括利益累計額:
+        member: ValuationAndTranslationAdjustmentsMember
+        備考: 個別ラベルは「評価・換算差額等」
+        子科目:
+          有価証券評価差額金:
+            member: ValuationDifferenceOnAvailableForSaleSecuritiesMember
+          為替換算調整勘定:
+            member: ForeignCurrencyTranslationAdjustmentMember
+          退職給付に係る調整累計額:
+            member: RemeasurementsOfDefinedBenefitPlansMember
+      新株予約権:
+        member: SubscriptionRightsToSharesMember
+      非支配株主持分:
+        member: NonControllingInterestsMember
+      純資産合計:
+        member: NetAssetsMember
+        合計行: true
+
+    # --- 行: 変動事由（Line Items） ---
+    変動事由:
+      残高:
+        期首残高:
+          qname: NetAssets
+          label_role: periodStartLabel
+          period: instant
+        期末残高:
+          qname: NetAssets
+          label_role: periodEndLabel
+          period: instant
+
+      変動:
+        _abstract: ChangesOfItemsDuringThePeriodAbstract
+
+        # 利益
+        当期純利益:
+          qname: ProfitLoss
+        親会社株主に帰属する当期純利益:
+          qname: ProfitLossAttributableToOwnersOfParent
+          備考: 連結のみ
+
+        # 配当
+        剰余金の配当:
+          qname: DividendsFromSurplus
+        剰余金の配当_その他資本剰余金:
+          qname: DividendsFromSurplusotherCapitalSurplus
+
+        # 新株発行
+        新株の発行:
+          qname: IssuanceOfNewShares
+        新株の発行_新株予約権行使:
+          qname: IssuanceOfNewSharesexerciseOfSubscriptionRightsToShares
+
+        # 自己株式
+        自己株式の取得:
+          qname: PurchaseOfTreasuryStock
+        自己株式の処分:
+          qname: DisposalOfTreasuryStock
+        自己株式の消却:
+          qname: RetirementOfTreasuryStock
+
+        # 積立金
+        別途積立金の積立:
+          qname: ProvisionOfGeneralReserve
+        別途積立金の取崩:
+          qname: ReversalOfGeneralReserve
+
+        # 株主資本以外
+        株主資本以外の項目の当期変動額:
+          qname: NetChangesOfItemsOtherThanShareholdersEquity
+
+        # 組織再編
+        連結範囲の変動:
+          qname: ChangeOfScopeOfConsolidation
+        合併による増加:
+          qname: IncreaseByMerger
+        会社分割による増加:
+          qname: IncreaseByCorporateDivision
+        株式交換による増加:
+          qname: IncreaseByShareExchanges
+        株式移転による増加:
+          qname: IncreaseByShareTransfers
+
+        # 振替
+        資本金から準備金への振替:
+          qname: TransferToLegalCapitalSurplusFromCapitalStock
+        資本金から剰余金への振替:
+          qname: TransferToOtherCapitalSurplusFromCapitalStock
+        準備金から資本金への振替:
+          qname: TransferToCapitalStockFromLegalCapitalSurplus
+        利益剰余金から資本剰余金への振替:
+          qname: TransferToCapitalSurplusFromRetainedEarnings
+
+        # 新株予約権
+        新株予約権の発行:
+          qname: IssuanceOfSubscriptionRightsToShares
+        新株予約権の行使:
+          qname: ExerciseOfSubscriptionRightsToShares
+        新株予約権の失効:
+          qname: LapseOfSubscriptionRightsToShares
+
+        # その他
+        減資:
+          qname: CapitalReduction
+        欠損金の処理:
+          qname: DeficitDisposition
+        土地再評価差額金の取崩:
+          qname: ReversalOfRevaluationReserveForLand
+
+        # 合計
+        当期変動額合計:
+          qname: TotalChangesOfItemsDuringThePeriod
+          合計行: true
