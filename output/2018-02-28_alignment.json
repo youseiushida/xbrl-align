@@ -1,6 +1,6 @@
 {
   "taxonomy_version": "2018-02-28",
-  "generated_at": "2026-03-19T01:00:34.626954+00:00",
+  "generated_at": "2026-03-19T13:34:55.172411+00:00",
   "standard_keys": {
     "NetSales": {
       "ja_name": "売上高",
@@ -721,11 +721,27 @@
       ],
       "variants": []
     },
+    "IncomeTaxesPayable": {
+      "ja_name": "未払法人税等",
+      "period_type": "instant",
+      "representative": [
+        "jppfs_cor:IncomeTaxesPayable"
+      ],
+      "variants": []
+    },
     "AccruedExpenses": {
       "ja_name": "未払費用",
       "period_type": "instant",
       "representative": [
         "jppfs_cor:AccruedExpenses"
+      ],
+      "variants": []
+    },
+    "AdvancesReceived": {
+      "ja_name": "前受金",
+      "period_type": "instant",
+      "representative": [
+        "jppfs_cor:AdvancesReceived"
       ],
       "variants": []
     },
@@ -2132,8 +2148,8 @@
     }
   },
   "metadata": {
-    "total_keys": 194,
-    "total_representative": 194,
+    "total_keys": 196,
+    "total_representative": 196,
     "total_variants": 548,
     "keys_with_ifrs": 0
   }

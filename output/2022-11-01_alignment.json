@@ -1,6 +1,6 @@
 {
   "taxonomy_version": "2022-11-01",
-  "generated_at": "2026-03-19T00:44:10.040316+00:00",
+  "generated_at": "2026-03-19T13:22:06.613069+00:00",
   "standard_keys": {
     "NetSales": {
       "ja_name": "売上高",
@@ -84,7 +84,6 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:NonOperatingIncome",
-        "jpigp_cor:OtherNonOperatingIncomeAndExpensesIFRS",
         "jpigp_cor:FinanceIncomeIFRS",
         "jpigp_cor:OtherIncomeIFRS"
       ],
@@ -149,7 +148,8 @@
       "ja_name": "特別利益",
       "period_type": "duration",
       "representative": [
-        "jppfs_cor:ExtraordinaryIncome"
+        "jppfs_cor:ExtraordinaryIncome",
+        "jpigp_cor:ExceptionalItemsRevenueIFRS"
       ],
       "variants": [
         "jppfs_cor:ReversalOfAllowanceForInvestmentLossEIBNK",
@@ -161,7 +161,8 @@
       "ja_name": "特別損失",
       "period_type": "duration",
       "representative": [
-        "jppfs_cor:ExtraordinaryLoss"
+        "jppfs_cor:ExtraordinaryLoss",
+        "jpigp_cor:ExceptionalItemsExpensesIFRS"
       ],
       "variants": []
     },
@@ -170,7 +171,9 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:ImpairmentLossEL",
-        "jpigp_cor:ImpairmentLossesPLIFRS"
+        "jpigp_cor:ImpairmentLossesPLIFRS",
+        "jpigp_cor:ImpairmentLossesOnFixedAssetsPLIFRS",
+        "jpigp_cor:ImpairmentLossesOnNonFinancialAssetsPLIFRS"
       ],
       "variants": []
     },
@@ -291,6 +294,7 @@
       "representative": [
         "jppfs_cor:ShortTermInvestmentSecurities",
         "jpigp_cor:MarketableSecuritiesCAIFRS",
+        "jpigp_cor:MarketableSecuritiesAssetsIFRS",
         "jpigp_cor:OtherFinancialAssetsCAIFRS"
       ],
       "variants": []
@@ -317,7 +321,10 @@
       "representative": [
         "jppfs_cor:NotesReceivableTrade",
         "jpigp_cor:TradeReceivablesCAIFRS",
-        "jpigp_cor:TradeReceivables2CAIFRS"
+        "jpigp_cor:TradeReceivables2CAIFRS",
+        "jpigp_cor:TradeAndOtherReceivablesCAIFRS",
+        "jpigp_cor:TradeAndOtherReceivables2CAIFRS",
+        "jpigp_cor:TradeAndOtherReceivables3CAIFRS"
       ],
       "variants": [
         "jppfs_cor:AllowanceForDoubtfulAccountsNotesReceivableTrade",
@@ -331,6 +338,8 @@
         "jppfs_cor:AccountsReceivableTrade",
         "jpigp_cor:TradeReceivablesCAIFRS",
         "jpigp_cor:TradeReceivables2CAIFRS",
+        "jpigp_cor:TradeAndOtherReceivablesCAIFRS",
+        "jpigp_cor:TradeAndOtherReceivables2CAIFRS",
         "jpigp_cor:TradeAndOtherReceivables3CAIFRS"
       ],
       "variants": [
@@ -344,6 +353,7 @@
       "representative": [
         "jppfs_cor:ContractAssets",
         "jpigp_cor:ContractAssetsCAIFRS",
+        "jpigp_cor:ContractAssetsNCAIFRS",
         "jpigp_cor:ContractAssetsAssetsIFRS"
       ],
       "variants": [
@@ -495,7 +505,7 @@
       "representative": [
         "jppfs_cor:AccountsReceivableOther",
         "jpigp_cor:OtherFinancialAssetsCAIFRS",
-        "jpigp_cor:TradeAndOtherReceivablesCAIFRS"
+        "jpigp_cor:OtherCurrentAssetsCAIFRS"
       ],
       "variants": []
     },
@@ -504,6 +514,7 @@
       "period_type": "instant",
       "representative": [
         "jppfs_cor:AccruedIncome",
+        "jpigp_cor:OtherFinancialAssetsCAIFRS",
         "jpigp_cor:OtherCurrentAssetsCAIFRS"
       ],
       "variants": []
@@ -513,7 +524,8 @@
       "period_type": "instant",
       "representative": [
         "jppfs_cor:OtherCA",
-        "jpigp_cor:OtherCurrentAssetsCAIFRS"
+        "jpigp_cor:OtherCurrentAssetsCAIFRS",
+        "jpigp_cor:OtherFinancialAssetsCAIFRS"
       ],
       "variants": []
     },
@@ -639,7 +651,9 @@
       "period_type": "instant",
       "representative": [
         "jppfs_cor:Software",
-        "jpigp_cor:SoftwareIFRS"
+        "jpigp_cor:SoftwareIFRS",
+        "jpigp_cor:SoftwareForInternalUseIFRS",
+        "jpigp_cor:SoftwareForSaleIFRS"
       ],
       "variants": []
     },
@@ -648,7 +662,8 @@
       "period_type": "instant",
       "representative": [
         "jppfs_cor:InvestmentsAndOtherAssets",
-        "jpigp_cor:OtherNonCurrentAssetsNCAIFRS"
+        "jpigp_cor:OtherNonCurrentAssetsNCAIFRS",
+        "jpigp_cor:OtherFinancialAssetsNCAIFRS"
       ],
       "variants": [
         "jppfs_cor:ReserveFundForReprocessingOfIrradiatedNuclearFuelIOAELE"
@@ -659,8 +674,7 @@
       "period_type": "instant",
       "representative": [
         "jppfs_cor:InvestmentSecurities",
-        "jpigp_cor:InvestmentSecuritiesNCAIFRS",
-        "jpigp_cor:OtherFinancialAssetsNCAIFRS"
+        "jpigp_cor:InvestmentSecuritiesNCAIFRS"
       ],
       "variants": []
     },
@@ -681,10 +695,9 @@
       "period_type": "instant",
       "representative": [
         "jppfs_cor:NetDefinedBenefitAsset",
-        "jpigp_cor:RetirementBenefitAssetAssetsIFRS",
         "jpigp_cor:RetirementBenefitAssetNCAIFRS",
-        "jpigp_cor:DefinedBenefitAssetAssetsIFRS",
-        "jpigp_cor:DefinedBenefitAssetNCAIFRS"
+        "jpigp_cor:DefinedBenefitAssetNCAIFRS",
+        "jpigp_cor:DefinedBenefitAssetAssetsIFRS"
       ],
       "variants": []
     },
@@ -760,12 +773,12 @@
       "period_type": "instant",
       "representative": [
         "jppfs_cor:NotesAndAccountsPayableTrade",
-        "jpigp_cor:TradePayablesCLIFRS",
-        "jpigp_cor:TradePayables2CLIFRS",
-        "jpigp_cor:TradePayables3CLIFRS",
         "jpigp_cor:TradeAndOtherPayablesCLIFRS",
         "jpigp_cor:TradeAndOtherPayables2CLIFRS",
-        "jpigp_cor:TradeAndOtherPayables3CLIFRS"
+        "jpigp_cor:TradeAndOtherPayables3CLIFRS",
+        "jpigp_cor:TradePayablesCLIFRS",
+        "jpigp_cor:TradePayables2CLIFRS",
+        "jpigp_cor:TradePayables3CLIFRS"
       ],
       "variants": []
     },
@@ -774,10 +787,12 @@
       "period_type": "instant",
       "representative": [
         "jppfs_cor:AccountsPayableTrade",
+        "jpigp_cor:TradeAndOtherPayablesCLIFRS",
+        "jpigp_cor:TradeAndOtherPayables2CLIFRS",
+        "jpigp_cor:TradeAndOtherPayables3CLIFRS",
         "jpigp_cor:TradePayablesCLIFRS",
         "jpigp_cor:TradePayables2CLIFRS",
-        "jpigp_cor:TradePayables3CLIFRS",
-        "jpigp_cor:TradeAndOtherPayables3CLIFRS"
+        "jpigp_cor:TradePayables3CLIFRS"
       ],
       "variants": []
     },
@@ -787,8 +802,7 @@
       "representative": [
         "jppfs_cor:ShortTermLoansPayable",
         "jpigp_cor:BorrowingsCLIFRS",
-        "jpigp_cor:BondsAndBorrowingsCLIFRS",
-        "jpigp_cor:InterestBearingLiabilitiesCLIFRS"
+        "jpigp_cor:BondsAndBorrowingsCLIFRS"
       ],
       "variants": []
     },
@@ -797,7 +811,9 @@
       "period_type": "instant",
       "representative": [
         "jppfs_cor:CommercialPapersLiabilities",
-        "jpigp_cor:BorrowingsCLIFRS"
+        "jpigp_cor:BorrowingsCLIFRS",
+        "jpigp_cor:BondsAndBorrowingsCLIFRS",
+        "jpigp_cor:OtherFinancialLiabilitiesCLIFRS"
       ],
       "variants": []
     },
@@ -829,6 +845,15 @@
       ],
       "variants": []
     },
+    "IncomeTaxesPayable": {
+      "ja_name": "未払法人税等",
+      "period_type": "instant",
+      "representative": [
+        "jppfs_cor:IncomeTaxesPayable",
+        "jpigp_cor:IncomeTaxesPayableCLIFRS"
+      ],
+      "variants": []
+    },
     "AccruedExpenses": {
       "ja_name": "未払費用",
       "period_type": "instant",
@@ -838,13 +863,23 @@
       ],
       "variants": []
     },
+    "AdvancesReceived": {
+      "ja_name": "前受金",
+      "period_type": "instant",
+      "representative": [
+        "jppfs_cor:AdvancesReceived",
+        "jpigp_cor:AdvancesReceivedCLIFRS",
+        "jpigp_cor:ContractLiabilitiesCLIFRS"
+      ],
+      "variants": []
+    },
     "UnearnedRevenue": {
       "ja_name": "前受収益",
       "period_type": "instant",
       "representative": [
         "jppfs_cor:UnearnedRevenue",
-        "jpigp_cor:DeferredIncomeCLIFRS",
-        "jpigp_cor:ContractLiabilitiesCLIFRS"
+        "jpigp_cor:ContractLiabilitiesCLIFRS",
+        "jpigp_cor:DeferredIncomeCLIFRS"
       ],
       "variants": []
     },
@@ -890,7 +925,8 @@
       "period_type": "instant",
       "representative": [
         "jppfs_cor:OtherCL",
-        "jpigp_cor:OtherCurrentLiabilitiesCLIFRS"
+        "jpigp_cor:OtherCurrentLiabilitiesCLIFRS",
+        "jpigp_cor:OtherFinancialLiabilitiesCLIFRS"
       ],
       "variants": []
     },
@@ -913,8 +949,7 @@
       "representative": [
         "jppfs_cor:LongTermLoansPayable",
         "jpigp_cor:BorrowingsNCLIFRS",
-        "jpigp_cor:BondsAndBorrowingsNCLIFRS",
-        "jpigp_cor:InterestBearingLiabilitiesNCLIFRS"
+        "jpigp_cor:BondsAndBorrowingsNCLIFRS"
       ],
       "variants": []
     },
@@ -952,7 +987,8 @@
       "representative": [
         "jppfs_cor:NetDefinedBenefitLiability",
         "jpigp_cor:RetirementBenefitLiabilityNCLIFRS",
-        "jpigp_cor:DefinedBenefitLiabilityNCLIFRS"
+        "jpigp_cor:DefinedBenefitLiabilityNCLIFRS",
+        "jpigp_cor:EmployeeBenefitsNCLIFRS"
       ],
       "variants": []
     },
@@ -979,7 +1015,8 @@
       "period_type": "instant",
       "representative": [
         "jppfs_cor:OtherNCL",
-        "jpigp_cor:OtherNonCurrentLiabilitiesNCLIFRS"
+        "jpigp_cor:OtherNonCurrentLiabilitiesNCLIFRS",
+        "jpigp_cor:OtherFinancialLiabilitiesNCLIFRS"
       ],
       "variants": []
     },
@@ -1115,7 +1152,7 @@
       "period_type": "instant",
       "representative": [
         "jppfs_cor:ValuationDifferenceOnAvailableForSaleSecurities",
-        "jpigp_cor:OtherComponentsOfEquityIFRS"
+        "jpigp_cor:FinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncomeEquityIFRS"
       ],
       "variants": []
     },
@@ -1206,7 +1243,8 @@
       "representative": [
         "jppfs_cor:DepreciationAndAmortizationOpeCF",
         "jpigp_cor:DepreciationExpenseOpeCFIFRS",
-        "jpigp_cor:DepreciationAndAmortizationOpeCFIFRS"
+        "jpigp_cor:DepreciationAndAmortizationOpeCFIFRS",
+        "jpigp_cor:DepreciationAndAmortizationOfIntangibleAssetsOpeCFIFRS"
       ],
       "variants": []
     },
@@ -1252,7 +1290,10 @@
       "representative": [
         "jppfs_cor:DecreaseIncreaseInNotesAndAccountsReceivableTradeOpeCF",
         "jpigp_cor:DecreaseIncreaseInTradeReceivables2OpeCFIFRS",
-        "jpigp_cor:DecreaseIncreaseInTradeReceivablesOpeCFIFRS"
+        "jpigp_cor:DecreaseIncreaseInTradeReceivablesOpeCFIFRS",
+        "jpigp_cor:DecreaseIncreaseInTradeAndOtherReceivablesOpeCFIFRS",
+        "jpigp_cor:DecreaseIncreaseInTradeAndOtherReceivables2OpeCFIFRS",
+        "jpigp_cor:DecreaseIncreaseInTradeAndOtherReceivables3OpeCFIFRS"
       ],
       "variants": []
     },
@@ -1272,7 +1313,10 @@
         "jppfs_cor:IncreaseDecreaseInNotesAndAccountsPayableTradeOpeCF",
         "jpigp_cor:IncreaseDecreaseInTradePayables2OpeCFIFRS",
         "jpigp_cor:IncreaseDecreaseInTradePayablesOpeCFIFRS",
-        "jpigp_cor:IncreaseDecreaseInTradePayables3OpeCFIFRS"
+        "jpigp_cor:IncreaseDecreaseInTradePayables3OpeCFIFRS",
+        "jpigp_cor:IncreaseDecreaseInTradeAndOtherPayablesOpeCFIFRS",
+        "jpigp_cor:IncreaseDecreaseInTradeAndOtherPayables2OpeCFIFRS",
+        "jpigp_cor:IncreaseDecreaseInTradeAndOtherPayables3OpeCFIFRS"
       ],
       "variants": []
     },
@@ -1730,7 +1774,9 @@
       "representative": [
         "jppfs_cor:InterestAndDividendsIncomeReceivedOpeCFInvCF",
         "jpigp_cor:InterestAndDividendsReceivedOpeCFIFRS",
-        "jpigp_cor:InterestAndDividendsReceivedInvCFIFRS"
+        "jpigp_cor:InterestAndDividendsReceivedInvCFIFRS",
+        "jpigp_cor:InterestReceivedOpeCFIFRS",
+        "jpigp_cor:DividendsReceivedOpeCFIFRS"
       ],
       "variants": []
     },
@@ -1768,7 +1814,8 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:PurchaseOfPropertyPlantAndEquipmentInvCF",
-        "jpigp_cor:PurchaseOfPropertyPlantAndEquipmentInvCFIFRS"
+        "jpigp_cor:PurchaseOfPropertyPlantAndEquipmentInvCFIFRS",
+        "jpigp_cor:PurchaseOfPropertyPlantAndEquipmentAndIntangibleAssetsInvCFIFRS"
       ],
       "variants": []
     },
@@ -1777,7 +1824,8 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:ProceedsFromSalesOfPropertyPlantAndEquipmentInvCF",
-        "jpigp_cor:ProceedsFromSaleOfPropertyPlantAndEquipmentInvCFIFRS"
+        "jpigp_cor:ProceedsFromSaleOfPropertyPlantAndEquipmentInvCFIFRS",
+        "jpigp_cor:ProceedsFromSaleOfPropertyPlantAndEquipmentAndIntangibleAssetsInvCFIFRS"
       ],
       "variants": []
     },
@@ -1786,7 +1834,8 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:PurchaseOfIntangibleAssetsInvCF",
-        "jpigp_cor:PurchaseOfIntangibleAssetsInvCFIFRS"
+        "jpigp_cor:PurchaseOfIntangibleAssetsInvCFIFRS",
+        "jpigp_cor:PurchaseOfPropertyPlantAndEquipmentAndIntangibleAssetsInvCFIFRS"
       ],
       "variants": []
     },
@@ -1858,7 +1907,8 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:ProceedsFromIssuanceOfBondsFinCF",
-        "jpigp_cor:ProceedsFromIssuanceOfBondsFinCFIFRS"
+        "jpigp_cor:ProceedsFromIssuanceOfBondsFinCFIFRS",
+        "jpigp_cor:ProceedsFromIssuanceOfBondsAndLongTermBorrowingsFinCFIFRS"
       ],
       "variants": []
     },
@@ -1867,7 +1917,8 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:RedemptionOfBondsFinCF",
-        "jpigp_cor:RedemptionOfBondsFinCFIFRS"
+        "jpigp_cor:RedemptionOfBondsFinCFIFRS",
+        "jpigp_cor:RedemptionOfBondsAndRepaymentsOfLongTermBorrowingsFinCFIFRS"
       ],
       "variants": []
     },
@@ -1876,7 +1927,8 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:CashDividendsPaidFinCF",
-        "jpigp_cor:DividendsPaidFinCFIFRS"
+        "jpigp_cor:DividendsPaidFinCFIFRS",
+        "jpigp_cor:DividendsPaidToOwnersOfParentFinCFIFRS"
       ],
       "variants": []
     },
@@ -1912,7 +1964,8 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:RepaymentsOfLeaseObligationsFinCF",
-        "jpigp_cor:RepaymentsOfLeaseObligationsFinCFIFRS"
+        "jpigp_cor:RepaymentsOfLeaseObligationsFinCFIFRS",
+        "jpigp_cor:RepaymentsOfFinanceLeaseObligationsFinCFIFRS"
       ],
       "variants": []
     },
@@ -1930,7 +1983,8 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:NetIncreaseDecreaseInCashAndCashEquivalents",
-        "jpigp_cor:NetIncreaseDecreaseInCashAndCashEquivalentsIFRS"
+        "jpigp_cor:NetIncreaseDecreaseInCashAndCashEquivalentsIFRS",
+        "jpigp_cor:NetIncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChangesIFRS"
       ],
       "variants": []
     },
@@ -2119,7 +2173,8 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:DividendsFromSurplus",
-        "jpigp_cor:DividendsSSIFRS"
+        "jpigp_cor:DividendsSSIFRS",
+        "jpigp_cor:DividendsToOwnersOfParentSSIFRS"
       ],
       "variants": []
     },
@@ -2182,8 +2237,8 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:ProvisionOfGeneralReserve",
-        "jpigp_cor:TransferToRetainedEarningsSSIFRS",
-        "jpigp_cor:TransferSSIFRS"
+        "jpigp_cor:TransferSSIFRS",
+        "jpigp_cor:TransferToRetainedEarningsSSIFRS"
       ],
       "variants": []
     },
@@ -2192,7 +2247,6 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:ReversalOfGeneralReserve",
-        "jpigp_cor:TransferToRetainedEarningsSSIFRS",
         "jpigp_cor:TransferSSIFRS"
       ],
       "variants": []
@@ -2201,7 +2255,10 @@
       "ja_name": "株主資本以外の項目の当期変動額",
       "period_type": "duration",
       "representative": [
-        "jppfs_cor:NetChangesOfItemsOtherThanShareholdersEquity"
+        "jppfs_cor:NetChangesOfItemsOtherThanShareholdersEquity",
+        "jpigp_cor:OtherComprehensiveIncomeIFRS",
+        "jpigp_cor:TotalOfItemsThatWillNotBeReclassifiedToProfitOrLossOCIIFRS",
+        "jpigp_cor:TotalOfItemsThatMayBeReclassifiedToProfitOrLossOCIIFRS"
       ],
       "variants": []
     },
@@ -2318,7 +2375,8 @@
       "period_type": "duration",
       "representative": [
         "jppfs_cor:CapitalReduction",
-        "jpigp_cor:TransferSSIFRS"
+        "jpigp_cor:TransferSSIFRS",
+        "jpigp_cor:OtherSSIFRS"
       ],
       "variants": []
     },
@@ -2351,14 +2409,14 @@
     }
   },
   "metadata": {
-    "total_keys": 194,
-    "total_representative": 412,
+    "total_keys": 196,
+    "total_representative": 456,
     "total_variants": 548,
-    "keys_with_ifrs": 163,
+    "keys_with_ifrs": 168,
     "llm_token_usage": {
-      "input_tokens": 90755,
-      "output_tokens": 20482,
-      "total_tokens": 120712
+      "input_tokens": 90835,
+      "output_tokens": 19703,
+      "total_tokens": 120617
     }
   }
 }
